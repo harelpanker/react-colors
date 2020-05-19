@@ -7,11 +7,10 @@ import Palette from "./components/Palette";
 
 class App extends Component {
   render() {
-    console.log(generatePalette(seedColors[4]));
+    // console.log(generatePalette(seedColors[4]));
     return (
       <div className='App'>
-        <Palette {...seedColors[2]} />
-        {/* <Palette {...seedColors[4]} /> */}
+        <Palette palette={generatePalette(seedColors[4])} />
       </div>
     );
   }
