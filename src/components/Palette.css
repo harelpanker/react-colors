@@ -2,5 +2,29 @@
   height: 100vh;
 }
 .palette-colors {
-  height: 80%;
+  height: 90%;
+}
+.slider {
+  width: 340px;
+  margin: 0 10px;
+  /* display: inline-block; */
+}
+.Palette .rc-slider-track {
+  background-color: transparent;
+}
+.Palette .rc-slider-rail {
+  height: 8px;
+}
+.Palette .rc-slider-handle,
+.Palette .rc-slider-handle:active,
+.Palette .rc-slider-handle:hover,
+.Palette .rc-slider-handle:focus {
+  background-color: green;
+  outline: none;
+  border: 2px solid green;
+  box-shadow: none;
+  width: 13px;
+  height: 13px;
+  margin-left: -7px;
+  margin-top: -3px;
 }
