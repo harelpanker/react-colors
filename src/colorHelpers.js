@@ -8,14 +8,18 @@ function generatePalette(starterPalette) {
     emoji: starterPalette.emoji,
     colors: {},
   };
+
   for (let level of levels) {
     newPalette.colors[level] = [];
+    // 50: [],
+    // 100: [] and so on
   }
   for (let color of starterPalette.colors) {
-    let scale = getScale(color.color, 10).reverse();
+    let scale = getScale(color.color, 10).reverse(); // reverse becuse we get it from light to dark
     for (let i in scale) {
       newPalette.colors[levels[i]].push({
-        name: `${color.name} ${levels[i]}`,
+        // we push inside the 10 shades of the color in all formats (hex, rgb, rgba)
+        name: `${color.name} ${levels[i]}`, // -> pink 500
         id: color.name.toLowerCase().replace(/ /g, "-"),
         hex: scale[i],
         rgb: chroma(scale[i]).css(),
@@ -30,7 +34,12 @@ function generatePalette(starterPalette) {
 }
 function getRange(hexColor) {
   const end = "#fff";
-  return [chroma(hexColor).darken(1.4).hex(), hexColor, end];
+  return [
+    chroma(hexColor).darken(1.4).hex(), // our color just darken and get a hex color
+    hexColor, // mid-value
+    end, // #fff
+    // color darken(1.4) -> our color -> white
+  ];
 }
 
 function getScale(hexColor, numberOfColors) {
