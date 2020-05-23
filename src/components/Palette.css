@@ -4,7 +4,7 @@
   flex-direction: column;
 }
 .palette-colors {
-  height: 90%;
+  height: 89vh;
 }
 .palette-footer {
   display: flex;
