@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
 import MiniPalette from "./MiniPalette";
 import { withStyles } from "@material-ui/styles";
 
 const styles = {
   root: {
-    backgroundColor: "blue",
+    backgroundColor: "#22366e",
     minHeight: "100vh",
     display: "flex",
     alignItems: "flex-start",
