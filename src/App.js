@@ -8,6 +8,7 @@ import { generatePalette } from "./colorHelpers";
 // components
 import Palette from "./components/Palette";
 import PaletteList from "./components/PaletteList";
+import SingleColorPalette from "./components/SingleColorPalette";
 
 class App extends Component {
   findPalette(id) {
@@ -39,7 +40,7 @@ class App extends Component {
         <Route
           exact
           path='/palette/:paletteId/:colorId'
-          render={() => <h1>Color id</h1>}
+          render={() => <SingleColorPalette />}
         />
       </Switch>
     );
