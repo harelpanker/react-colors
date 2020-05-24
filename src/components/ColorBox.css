@@ -58,6 +58,12 @@
   text-transform: uppercase;
   font-size: 12px;
 }
+.light-text {
+  color: white;
+}
+.ColorBox .dark-text {
+  color: black;
+}
 /* See more button */
 .see-more {
   position: absolute;
@@ -69,7 +75,7 @@
   letter-spacing: 1px;
   font-size: 12px;
   background-color: rgba(255, 255, 255, 0.3);
-  color: black;
+  color: white;
   text-align: center;
 }
 /* Copy overlay div */

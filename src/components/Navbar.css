@@ -28,7 +28,7 @@
 }
 .slider {
   width: 340px;
-  margin: 0 10px;
+  margin: 0 20px;
   /* display: inline-block; */
 }
 .Palette .rc-slider-track {
@@ -47,7 +47,7 @@
   box-shadow: none;
   width: 13px;
   height: 13px;
-  margin-left: -7px;
+  margin-left: 0;
   margin-top: -3px;
 }
 .select-container {
