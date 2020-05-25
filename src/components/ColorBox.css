@@ -1,4 +1,4 @@
-.ColorBox {
+/* .ColorBox {
   width: 20%;
   height: 25%;
   margin: 0 auto;
@@ -6,15 +6,15 @@
   position: relative;
   cursor: pointer;
   margin-bottom: -3.5px;
-}
-.Single-color-palette .ColorBox {
+} */
+/* .Single-color-palette .ColorBox {
   height: 50%;
-}
-.ColorBox.go-back {
+} */
+/* .ColorBox.go-back {
   background-color: black;
-}
+} */
 /* Button style */
-.copy-button,
+/* .copy-button,
 .back-button {
   width: 100px;
   height: 30px;
@@ -35,35 +35,34 @@
   text-decoration: none;
   transition: 0.3s ease;
   z-index: 5;
-}
-.copy-button {
+} */
+/* .copy-button {
   opacity: 0;
 }
 .ColorBox:hover .copy-button {
   opacity: 1;
   transition: 0.3s ease;
-}
+} */
 
 /* Name of color */
-.box-content {
+/* .box-content {
   position: absolute;
   width: 100%;
   left: 0;
   bottom: 0;
-
   padding: 10px;
   color: black;
   letter-spacing: 1px;
   text-transform: uppercase;
   font-size: 12px;
-}
-.light-text {
+} */
+/* .light-text {
   color: white;
 }
 .ColorBox .dark-text {
   color: black;
 }
-/* See more button */
+See more button
 .see-more {
   position: absolute;
   right: 0;
@@ -76,48 +75,46 @@
   background-color: rgba(255, 255, 255, 0.3);
   color: white;
   text-align: center;
-}
+} */
 /* Copy overlay div */
-.copy-overlay {
+/* .copy-overlay {
   opacity: 0;
   z-index: 0;
   width: 100%;
   height: 100%;
   transform: scale(0.1);
   transition: transform 0.6s ease-in-out;
-}
-.copy-overlay.show {
+} */
+/* .copy-overlay.show {
   opacity: 1;
   transform: scale(50);
   z-index: 10;
   position: absolute;
-}
+} */
 /* Copy message div */
-.copy-msg {
+/* .copy-msg {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   font-size: 4rem;
   opacity: 0;
   transform: scale(0.1);
   color: white;
-}
-.copy-msg.show {
+} */
+/* .copy-msg.show {
   transition-delay: 0.3s;
   transition: all 0.4s ease-in-out;
   opacity: 1;
   transform: scale(1);
   z-index: 20;
-}
-.copy-msg h2 {
+} */
+/* .copy-msg h2 {
   font-weight: 400;
   width: 100%;
   text-shadow: 1px 2px black;
@@ -126,8 +123,8 @@
   text-transform: uppercase;
   margin-bottom: 0;
   padding: 1rem;
-}
-.copy-msg p {
+} */
+/* .copy-msg p {
   font-size: 2rem;
   font-weight: 200;
-}
+} */
