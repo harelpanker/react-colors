@@ -33,7 +33,7 @@ class Palette extends Component {
         name={color.name}
         id={color.id}
         paletteId={palette.id}
-        showLink={true}
+        showingFullPalette={true}
       />
     ));
     return (
