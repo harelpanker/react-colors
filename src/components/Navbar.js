@@ -11,7 +11,8 @@ import { Link } from "react-router-dom";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 
-import "./Navbar.css";
+import styles from "./styles/NavbarStyles";
+import { withStyles } from "@material-ui/styles";
 
 class Navbar extends Component {
   constructor(props) {
@@ -34,19 +35,19 @@ class Navbar extends Component {
   }
 
   render() {
-    const { level, changeLevel, showAllColors } = this.props;
+    const { level, changeLevel, showAllColors, classes } = this.props;
     const { format, open } = this.state;
 
     return (
-      <nav className='Navbar'>
-        <div className='logo'>
+      <nav className={classes.Navbar}>
+        <div className={classes.logo}>
           <Link to='/'>Color Picker</Link>
         </div>
         {showAllColors && (
           // {/* Slider */}
-          <div className='slider-container'>
+          <div className={classes.sliderContainer}>
             <span>Level: {level}</span>
-            <div className='slider'>
+            <div className={classes.slider}>
               <Slider
                 min={100}
                 max={900}
@@ -58,7 +59,7 @@ class Navbar extends Component {
           </div>
         )}
 
-        <div className='select-container'>
+        <div className={classes.selectContainer}>
           <Select value={format} onChange={this.handleFormatChange}>
             <MenuItem value='hex'>HEX - #ffffff</MenuItem>
             <MenuItem value='rgb'>RGB - rgb(255, 255, 255)</MenuItem>
@@ -94,4 +95,4 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+export default withStyles(styles)(Navbar);
