@@ -1,11 +1,11 @@
-.Palette {
+/* .Palette {
   height: 100vh;
   display: flex;
   flex-direction: column;
-}
-.palette-colors {
+} */
+/* .palette-colors {
   height: 89vh;
-}
+} */
 .palette-footer {
   display: flex;
   justify-content: flex-end;
