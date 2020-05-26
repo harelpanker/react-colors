@@ -11,9 +11,13 @@ import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import Button from "@material-ui/core/Button";
 
-const drawerWidth = 240;
+// https://casesandberg.github.io/react-color/
+// React color picker
+import { ChromePicker } from "react-color";
 
+const drawerWidth = 300;
 const styles = (theme) => ({
   root: {
     display: "flex",
@@ -55,7 +59,7 @@ const styles = (theme) => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing.unit * 3,
+    padding: theme.spacing(3),
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -74,6 +78,7 @@ const styles = (theme) => ({
 class NewPaletteForm extends Component {
   state = {
     open: false,
+    color: "#000",
   };
 
   handleDrawerOpen = () => {
@@ -86,7 +91,7 @@ class NewPaletteForm extends Component {
 
   render() {
     const { classes } = this.props;
-    const { open } = this.state;
+    const { open, color } = this.state;
 
     return (
       <div className={classes.root}>
@@ -123,6 +128,28 @@ class NewPaletteForm extends Component {
             </IconButton>
           </div>
           <Divider />
+          {/* Content goes here */}
+          <Typography variant='h4'> Design Your Palette</Typography>
+          <div>
+            <Button variant='contained' color='secondary'>
+              Clear Palette
+            </Button>
+            <Button variant='contained' color='primary'>
+              Random Color
+            </Button>
+          </div>
+          <ChromePicker
+            color={color}
+            onChangeComplete={(newColor) => {
+              this.setState({ color: newColor });
+              console.log(color);
+              console.log("------------------------------");
+              console.log(newColor);
+            }}
+          />
+          <Button variant='contained' color='primary'>
+            Add Color
+          </Button>
         </Drawer>
         <main
           className={classNames(classes.content, {
