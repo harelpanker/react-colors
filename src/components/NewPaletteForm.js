@@ -76,10 +76,18 @@ const styles = (theme) => ({
 });
 
 class NewPaletteForm extends Component {
-  state = {
-    open: false,
-    color: "#000",
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+      currentColor: "#22366e",
+      colors: ["black", "#fff"],
+    };
+    this.addNewColors = this.addNewColors.bind(this);
+  }
+  addNewColors() {
+    this.setState({ colors: [...this.state.colors, this.state.currentColor] });
+  }
 
   handleDrawerOpen = () => {
     this.setState({ open: true });
@@ -89,9 +97,13 @@ class NewPaletteForm extends Component {
     this.setState({ open: false });
   };
 
+  updateCurrentColor = (newColor) => {
+    this.setState({ currentColor: newColor.hex });
+  };
+
   render() {
     const { classes } = this.props;
-    const { open, color } = this.state;
+    const { open, currentColor, colors } = this.state;
 
     return (
       <div className={classes.root}>
@@ -139,15 +151,15 @@ class NewPaletteForm extends Component {
             </Button>
           </div>
           <ChromePicker
-            color={color}
-            onChangeComplete={(newColor) => {
-              this.setState({ color: newColor });
-              console.log(color);
-              console.log("------------------------------");
-              console.log(newColor);
-            }}
+            color={currentColor}
+            disableAlpha
+            onChange={this.updateCurrentColor}
           />
-          <Button variant='contained' color='primary'>
+          <Button
+            onClick={this.addNewColors}
+            variant='contained'
+            color='primary'
+            style={{ backgroundColor: currentColor }}>
             Add Color
           </Button>
         </Drawer>
@@ -156,6 +168,13 @@ class NewPaletteForm extends Component {
             [classes.contentShift]: open,
           })}>
           <div className={classes.drawerHeader} />
+          <ul>
+            {colors.map((color, i) => (
+              <li key={i} style={{ backgroundColor: color }}>
+                {color}
+              </li>
+            ))}
+          </ul>
         </main>
       </div>
     );
