@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import DraggableColorBox from "./DraggableColorBox";
+import DraggableColorList from "./DraggableColorList";
 // Material-ui
 import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
@@ -19,6 +19,8 @@ import Button from "@material-ui/core/Button";
 import { ChromePicker } from "react-color";
 // react form validator
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+// https://github.com/clauderic/react-sortable-hoc
+import arrayMove from "array-move";
 
 const drawerWidth = 300;
 const styles = (theme) => ({
@@ -92,6 +94,7 @@ class NewPaletteForm extends Component {
     this.addNewColors = this.addNewColors.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.removeColor = this.removeColor.bind(this);
   }
   componentDidMount() {
     ValidatorForm.addValidationRule("isColorNameUnique", (value) =>
@@ -150,6 +153,12 @@ class NewPaletteForm extends Component {
 
   updateCurrentColor = (newColor) => {
     this.setState({ currentColor: newColor.hex });
+  };
+
+  onSortEnd = ({ oldIndex, newIndex }) => {
+    this.setState(({ colors }) => ({
+      colors: arrayMove(colors, oldIndex, newIndex),
+    }));
   };
 
   render() {
@@ -255,14 +264,12 @@ class NewPaletteForm extends Component {
             [classes.contentShift]: open,
           })}>
           <div className={classes.drawerHeader} />
-          {colors.map((color) => (
-            <DraggableColorBox
-              key={color.name}
-              color={color.color}
-              name={color.name}
-              handleClick={() => this.removeColor(color.name)}
-            />
-          ))}
+          <DraggableColorList
+            colors={colors}
+            removeColor={this.removeColor}
+            axis='xy'
+            onSortEnd={this.onSortEnd}
+          />
         </main>
       </div>
     );
