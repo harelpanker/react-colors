@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import DraggableColorList from "./DraggableColorList";
 import PaletteFormNav from "./PaletteFormNav";
+import ColorPickerForm from "./ColorPickerForm";
 // Material-ui
 import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
@@ -11,11 +12,6 @@ import IconButton from "@material-ui/core/IconButton";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import Button from "@material-ui/core/Button";
 
-// https://casesandberg.github.io/react-color/
-// React color picker
-import { ChromePicker } from "react-color";
-// react form validator
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 // https://github.com/clauderic/react-sortable-hoc
 import arrayMove from "array-move";
 
@@ -84,9 +80,7 @@ class NewPaletteForm extends Component {
     super(props);
     this.state = {
       open: false,
-      currentColor: "#22366e",
       colors: this.props.palettes[0].colors,
-      newColorName: "",
     };
     this.addNewColors = this.addNewColors.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -94,16 +88,6 @@ class NewPaletteForm extends Component {
     this.removeColor = this.removeColor.bind(this);
     this.clearPalette = this.clearPalette.bind(this);
     this.addrandomColor = this.addrandomColor.bind(this);
-  }
-  componentDidMount() {
-    ValidatorForm.addValidationRule("isColorNameUnique", (value) =>
-      this.state.colors.every(
-        ({ name }) => name.toLowerCase() !== value.toLowerCase()
-      )
-    );
-    ValidatorForm.addValidationRule("isColorUnique", () =>
-      this.state.colors.every(({ color }) => color !== this.state.currentColor)
-    );
   }
   clearPalette() {
     this.setState({ colors: [] });
@@ -145,9 +129,7 @@ class NewPaletteForm extends Component {
     });
   }
 
-  addNewColors() {
-    const { currentColor, newColorName } = this.state;
-    const newColor = { color: currentColor, name: newColorName };
+  addNewColors(newColor) {
     this.setState({
       colors: [...this.state.colors, newColor],
       newColorName: "",
@@ -162,10 +144,6 @@ class NewPaletteForm extends Component {
     this.setState({ open: false });
   };
 
-  updateCurrentColor = (newColor) => {
-    this.setState({ currentColor: newColor.hex });
-  };
-
   onSortEnd = ({ oldIndex, newIndex }) => {
     this.setState(({ colors }) => ({
       colors: arrayMove(colors, oldIndex, newIndex),
@@ -174,7 +152,7 @@ class NewPaletteForm extends Component {
 
   render() {
     const { classes, maxColors, palettes } = this.props;
-    const { open, currentColor, colors, newColorName } = this.state;
+    const { open, currentColor, colors } = this.state;
     const paletteIsFull = colors.length >= maxColors;
 
     return (
@@ -220,34 +198,11 @@ class NewPaletteForm extends Component {
               {paletteIsFull ? "Palette full" : "Random Color"}
             </Button>
           </div>
-          <ChromePicker
-            color={currentColor}
-            disableAlpha
-            onChange={this.updateCurrentColor}
+          <ColorPickerForm
+            paletteIsFull={paletteIsFull}
+            addNewColor={this.addNewColors}
+            colors={colors}
           />
-          <ValidatorForm onSubmit={this.addNewColors}>
-            <TextValidator
-              value={newColorName}
-              name='newColorName'
-              onChange={this.handleChange}
-              validators={["required", "isColorNameUnique", "isColorUnique"]}
-              errorMessages={[
-                "Enter a color name",
-                "Color name must be unique",
-                "Color already used!",
-              ]}
-            />
-            <Button
-              type='submit'
-              variant='contained'
-              disabled={paletteIsFull}
-              color='primary'
-              style={{
-                backgroundColor: paletteIsFull ? "grey" : currentColor,
-              }}>
-              {paletteIsFull ? "Palette full" : "Add Color"}
-            </Button>
-          </ValidatorForm>
         </Drawer>
         {/* outside of the drawer */}
         <main
