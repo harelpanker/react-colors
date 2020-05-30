@@ -6,9 +6,11 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-
 // react form validator
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+// https://github.com/missive/emoji-mart
+import "emoji-mart/css/emoji-mart.css";
+import { Picker } from "emoji-mart";
 
 class PaletteMetaForm extends Component {
   constructor(props) {
@@ -37,17 +39,19 @@ class PaletteMetaForm extends Component {
 
   handleClose = () => {
     this.setState({ open: false });
+    this.props.heidForm();
   };
 
   render() {
     const { newPaletteName, open } = this.state;
+    const { heidForm, handleSubmit } = this.props;
     return (
       <Dialog
         open={open}
         onClose={this.handleClose}
         aria-labelledby='form-dialog-title'>
         <DialogTitle id='form-dialog-title'>Choose a Palette Name</DialogTitle>
-        <ValidatorForm onSubmit={() => this.props.handleSubmit(newPaletteName)}>
+        <ValidatorForm onSubmit={() => handleSubmit(newPaletteName)}>
           <DialogContent>
             <DialogContentText>
               Please enter a name to your new beautiful palette
@@ -66,11 +70,11 @@ class PaletteMetaForm extends Component {
               ]}
             />
           </DialogContent>
+
+          <Picker />
+
           <DialogActions>
-            <Button
-              onClick={this.handleClose}
-              variant='contained'
-              color='secondary'>
+            <Button onClick={heidForm} variant='contained' color='secondary'>
               Cancel
             </Button>
             <Button variant='contained' color='primary' type='submit'>
