@@ -15,10 +15,27 @@ import Button from "@material-ui/core/Button";
 // https://github.com/clauderic/react-sortable-hoc
 import arrayMove from "array-move";
 
-const drawerWidth = 300;
+const drawerWidth = 350;
 const styles = (theme) => ({
   root: {
     display: "flex",
+  },
+  container: {
+    width: "90%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%",
+  },
+  buttons: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "space-between",
+    "& button": {
+      width: "47%",
+      whiteSpace: "nowrap",
+    },
   },
   drawer: {
     width: drawerWidth,
@@ -26,6 +43,8 @@ const styles = (theme) => ({
   },
   drawerPaper: {
     width: drawerWidth,
+    display: "flex",
+    alignItems: "center",
   },
   drawerHeader: {
     display: "flex",
@@ -33,6 +52,7 @@ const styles = (theme) => ({
     padding: "0 8px",
     ...theme.mixins.toolbar,
     justifyContent: "flex-end",
+    alignSelf: "flex-end",
   },
   content: {
     flexGrow: 1,
@@ -157,30 +177,34 @@ class NewPaletteForm extends Component {
           </div>
           <Divider />
           {/* Content goes here */}
-          <Typography variant='h4'>Design Your Palette</Typography>
-          <div>
-            <Button
-              variant='contained'
-              color='secondary'
-              onClick={this.clearPalette}>
-              Clear Palette
-            </Button>
-            <Button
-              variant='contained'
-              color='primary'
-              style={{
-                backgroundColor: paletteIsFull ? "grey" : currentColor,
-              }}
-              disabled={paletteIsFull}
-              onClick={this.addrandomColor}>
-              {paletteIsFull ? "Palette full" : "Random Color"}
-            </Button>
+          <div className={classes.container}>
+            <Typography variant='h4' gutterBottom>
+              Design Your Palette
+            </Typography>
+            <div className={classes.buttons}>
+              <Button
+                variant='contained'
+                color='secondary'
+                onClick={this.clearPalette}>
+                Clear Palette
+              </Button>
+              <Button
+                variant='contained'
+                color='primary'
+                style={{
+                  backgroundColor: paletteIsFull ? "grey" : currentColor,
+                }}
+                disabled={paletteIsFull}
+                onClick={this.addrandomColor}>
+                {paletteIsFull ? "Palette full" : "Random Color"}
+              </Button>
+            </div>
+            <ColorPickerForm
+              paletteIsFull={paletteIsFull}
+              addNewColor={this.addNewColors}
+              colors={colors}
+            />
           </div>
-          <ColorPickerForm
-            paletteIsFull={paletteIsFull}
-            addNewColor={this.addNewColors}
-            colors={colors}
-          />
         </Drawer>
         {/* outside of the drawer */}
         <main
