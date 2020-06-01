@@ -5,6 +5,7 @@ export default {
     display: "flex",
     alignItems: "flex-start",
     justifyContent: "center",
+    paddingBottom: 50,
   },
   container: {
     width: "70%",
