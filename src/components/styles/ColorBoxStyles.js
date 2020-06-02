@@ -4,7 +4,7 @@ import sizes from "./sizes";
 export default {
   ColorBox: {
     height: (props) => (props.showingFullPalette ? "25%" : "50%"),
-    minHeight: (props) => (props.showingFullPalette ? "150px" : "300px"),
+    minHeight: (props) => (props.showingFullPalette ? "150px" : "200px"),
     width: "20%",
     margin: "0 auto",
     display: "inline-block",
@@ -17,15 +17,12 @@ export default {
     },
     [sizes.down("lg")]: {
       width: "25%",
-      // height: (props) => (props.showingFullPalette ? "20%" : "50%"),
     },
     [sizes.down("md")]: {
       width: "50%",
-      // height: (props) => (props.showingFullPalette ? "10%" : "50%"),
     },
     [sizes.down("xs")]: {
       width: "100%",
-      // height: (props) => (props.showingFullPalette ? "5%" : "50%"),
     },
   },
   copyText: {
@@ -120,6 +117,9 @@ export default {
       textTransform: "uppercase",
       marginBottom: "0",
       padding: "1rem",
+      [sizes.down("xs")]: {
+        fontSize: "5rem",
+      },
     },
     "& p": {
       fontSize: "2rem",

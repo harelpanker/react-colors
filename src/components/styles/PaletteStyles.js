@@ -1,12 +1,23 @@
+import sizes from "./sizes";
+
 export default {
   Palette: {
     height: "100vh",
-    display: "flex",
-    flexDirection: "column",
+    // display: "flex",
+    // flexDirection: "column",
+    [sizes.down("lg")]: {
+      height: "auto",
+    },
   },
-  paletteColors: { height: "89vh" },
+  paletteColors: {
+    height: "88vh",
+    [sizes.down("lg")]: {
+      height: "auto",
+    },
+  },
   goBack: {
     height: "50%",
+    minHeight: "150px",
     width: "20%",
     margin: "0 auto",
     display: "inline-block",
@@ -35,6 +46,16 @@ export default {
       textDecoration: "none",
       transition: "0.3s ease",
       zIndex: "5px",
+    },
+    [sizes.down("lg")]: {
+      width: "25%",
+      minHeight: "200px",
+    },
+    [sizes.down("md")]: {
+      width: "50%",
+    },
+    [sizes.down("xs")]: {
+      width: "100%",
     },
   },
 };

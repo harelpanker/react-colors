@@ -1,13 +1,18 @@
+import sizes from "./sizes";
 export default {
   paletteFooter: {
     display: "flex",
     justifyContent: "flex-end",
     alignItems: "center",
-    height: "5vh",
+    height: "6vh",
     fontWeight: "bold",
+    padding: "0 7px",
+    [sizes.down("lg")]: {
+      height: "50px",
+    },
   },
   emoji: {
-    margin: "0 7px",
+    marginLeft: "7px",
     fontSize: "1.5rem",
   },
 };

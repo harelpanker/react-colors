@@ -1,9 +1,13 @@
+import sizes from "./sizes";
 export default {
   Navbar: {
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-start",
     height: "6vh",
+    [sizes.down("lg")]: {
+      height: "64px",
+    },
   },
   sliderContainer: {
     display: "flex",
