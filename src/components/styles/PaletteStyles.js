@@ -3,11 +3,13 @@ import sizes from "./sizes";
 export default {
   Palette: {
     height: "100vh",
-    // display: "flex",
-    // flexDirection: "column",
+    display: "flex",
+    flexDirection: "column",
     [sizes.down("lg")]: {
       height: "auto",
     },
+    maxWidth: "100%",
+    overflowX: "hidden",
   },
   paletteColors: {
     height: "88vh",
