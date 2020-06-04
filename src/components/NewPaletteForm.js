@@ -3,7 +3,6 @@ import DraggableColorList from "./DraggableColorList";
 import PaletteFormNav from "./PaletteFormNav";
 import ColorPickerForm from "./ColorPickerForm";
 import styles from "./styles/NewPaletteformStyles";
-import seedColors from "../seedColors";
 // Material-ui
 import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
@@ -24,7 +23,7 @@ class NewPaletteForm extends Component {
     super(props);
     this.state = {
       open: false,
-      colors: seedColors[0].colors,
+      colors: this.props.palettes[0].colors,
     };
     this.addNewColors = this.addNewColors.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -41,11 +40,16 @@ class NewPaletteForm extends Component {
     const allColors = this.props.palettes
       .map((palette) => palette.colors)
       .flat();
-    const filteredArr = allColors.filter(
-      (color) => !this.state.colors.includes(color)
-    );
-    const randomColor =
-      filteredArr[Math.floor(Math.random() * filteredArr.length)];
+    let rand;
+    let randomColor;
+    let isDuplicateColor = true;
+    while (isDuplicateColor) {
+      rand = Math.floor(Math.random() * allColors.length);
+      randomColor = allColors[rand];
+      isDuplicateColor = this.state.colors.some(
+        (color) => color.name === randomColor.name
+      );
+    }
     this.setState({
       colors: [...this.state.colors, randomColor],
     });

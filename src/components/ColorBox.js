@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styles from "./styles/ColorBoxStyles";
 // Material-ui
-import { withStyles } from "@material-ui/styles";
+import { withStyles } from "@material-ui/core/styles";
 import classNames from "classnames";
 // https://www.npmjs.com/package/react-copy-to-clipboard
 import { CopyToClipboard } from "react-copy-to-clipboard";
