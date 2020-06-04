@@ -4,7 +4,6 @@ import styles from "./styles/ColorBoxStyles";
 // Material-ui
 import { withStyles } from "@material-ui/styles";
 import classNames from "classnames";
-
 // https://www.npmjs.com/package/react-copy-to-clipboard
 import { CopyToClipboard } from "react-copy-to-clipboard";
 

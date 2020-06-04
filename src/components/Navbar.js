@@ -77,7 +77,7 @@ class Navbar extends Component {
                 Format Changed to {format.toUpperCase()}
               </span>
             }
-            ContentProps={{ "aria-describadby": "message-id" }}
+            ContentProps={{ "aria-labelledby": "message-id" }}
             onClose={this.closeSnackbar}
             action={
               <IconButton
