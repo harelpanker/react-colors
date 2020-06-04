@@ -3,6 +3,7 @@ import DraggableColorList from "./DraggableColorList";
 import PaletteFormNav from "./PaletteFormNav";
 import ColorPickerForm from "./ColorPickerForm";
 import styles from "./styles/NewPaletteformStyles";
+import seedColors from "../seedColors";
 // Material-ui
 import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
@@ -23,7 +24,7 @@ class NewPaletteForm extends Component {
     super(props);
     this.state = {
       open: false,
-      colors: this.props.palettes[0].colors,
+      colors: seedColors[0].colors,
     };
     this.addNewColors = this.addNewColors.bind(this);
     this.handleChange = this.handleChange.bind(this);

@@ -1,4 +1,5 @@
 import sizes from "./sizes";
+import chroma from "chroma-js";
 
 const styles = {
   root: {
@@ -10,7 +11,7 @@ const styles = {
     cursor: "pointer",
     marginBottom: "-5px",
     "&:hover svg": {
-      color: "black",
+      // color: "black",
       transform: "scale(1.3)",
     },
     [sizes.down("lg")]: {
@@ -32,7 +33,8 @@ const styles = {
     bottom: "0",
     width: "100%",
     padding: "10px",
-    color: "black",
+    color: (props) =>
+      chroma(props.color).luminance() <= 0.4 ? "white" : "black",
     letterSpacing: "1px",
     textTransform: "uppercase",
     fontSize: "12px",
@@ -41,10 +43,11 @@ const styles = {
     alignItems: "center",
   },
   deleteIcon: {
-    color: "white",
-    padding: "5px",
-    backgroundColor: "rgba(255, 255, 255, 0.2)",
-    borderRadius: "50%",
+    color: (props) =>
+      chroma(props.color).luminance() <= 0.4 ? "white" : "black",
+    padding: "3px",
+    // backgroundColor: "rgba(255, 255, 255, 0.2)",
+    // borderRadius: "50%",
     transition: "all .3s ease-in-out",
   },
 };
