@@ -15,6 +15,14 @@ export default {
     alignItems: "center",
     justifyContent: "flex-start",
     marginLeft: "10px",
+    "& span": {
+      fontSize: "1rem",
+    },
+    [sizes.down("sm")]: {
+      "& span": {
+        fontSize: ".5rem",
+      },
+    },
   },
   logo: {
     fontSize: "1rem",

@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { withStyles } from "@material-ui/styles";
 import styles from "./styles/ColorBoxStyles";
+// Material-ui
+import { withStyles } from "@material-ui/styles";
+import classNames from "classnames";
 
 // https://www.npmjs.com/package/react-copy-to-clipboard
 import { CopyToClipboard } from "react-copy-to-clipboard";
@@ -36,15 +38,14 @@ class ColorBox extends Component {
           {/* The overlay div */}
           <div
             style={{ background: background }}
-            // className={`copy-overlay ${copied && "show"}`}
-            className={`${classes.copyOverlay} ${
-              copied && classes.showOverlay
-            }`}
+            className={classNames(classes.copyOverlay, {
+              [classes.showOverlay]: copied,
+            })}
           />
           <div
-            className={`${classes.copyMessage} ${
-              copied && classes.showMessage
-            }`}>
+            className={classNames(classes.copyMessage, {
+              [classes.showMessage]: copied,
+            })}>
             <h2>Copied!</h2>
             <p className={classes.copyText}>{background}</p>
           </div>
